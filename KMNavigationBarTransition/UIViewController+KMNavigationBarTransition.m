@@ -98,7 +98,8 @@
         fromViewController.view.clipsToBounds = NO;
         toViewController.view.clipsToBounds = NO;
         if (!self.km_transitionNavigationBar) {
-            [self km_addTransitionNavigationBarIfNeeded];
+            [self 
+            ];
             self.navigationController.km_backgroundViewHidden = YES;
         }
         [self km_resizeTransitionNavigationBarFrame];
@@ -138,6 +139,10 @@
     bar.barTintColor = self.navigationController.navigationBar.barTintColor;
     [bar setBackgroundImage:[self.navigationController.navigationBar backgroundImageForBarMetrics:UIBarMetricsDefault] forBarMetrics:UIBarMetricsDefault];
     bar.shadowImage = self.navigationController.navigationBar.shadowImage;
+    if (@available(iOS 13.0, *)) {
+        bar.standardAppearance = self.navigationController.navigationBar.standardAppearance;
+        bar.scrollEdgeAppearance = self.navigationController.navigationBar.scrollEdgeAppearance;
+    }
     [self.km_transitionNavigationBar removeFromSuperview];
     self.km_transitionNavigationBar = bar;
     [self km_resizeTransitionNavigationBarFrame];
